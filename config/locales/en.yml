@@ -32,6 +32,6 @@
 en:
   hello: "Hello world"
 
-carts;
-  show:
-  cart_not_found:"panier indisponible"
+carts:
+    show:
+      cart_not_found: "Panier indisponible"

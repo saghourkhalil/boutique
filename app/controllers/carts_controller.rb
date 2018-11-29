@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-rescue_from ActiveRecord::RecordNotFound, with: :cart_noy_found
+rescue_from ActiveRecord::RecordNotFound, with: :cart_not_found
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
   # GET /carts
@@ -55,9 +55,11 @@ rescue_from ActiveRecord::RecordNotFound, with: :cart_noy_found
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
+    return unless @cart.id == session[:cart_id]
     @cart.destroy
+    session.delete(:cart_id)
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Cart was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

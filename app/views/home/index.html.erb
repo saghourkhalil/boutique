@@ -53,9 +53,7 @@
 
 
 <div class= "col">
-<% cache @products do %>
     <% @products.each do |product| %>
-        <% cache product do %>
 <div id="grid">
 
     <div class="product">
@@ -165,8 +163,7 @@
     </div>
     </div>
     <% end %>
-    <% end %>
-    <% end %>
+    
 
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
